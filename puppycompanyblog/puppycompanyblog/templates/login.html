@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert">
+    {% for mess in get_flashed_messages() %}
+
+    <div class="alert alert-primary alert-dismissible fade show" role="alert"><i class="fas fa-user-plus"></i>
+        {{mess}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    {% endfor %}
+</div>
+<div class="row justify-content-center"  style="margin-top: 5px">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);">
+        <div class="card-body">
+            <center>
+	        <h2 class="card-title" style="color: #0275d8">Login!</h2>
+	        <hr size="5px">
+            </center>
+            <center>
+        	<form class="form form-horizontal center" method="POST" name="form">
+        	<div class="content">
+            {{ form.hidden_tag() }}
+            {{ form.email.label(style="color: #0275d8") }} <br> {{ form.email }}<br><br>
+            {{ form.password.label(style="color: #0275d8") }} <br> {{ (form.password) }}<br>
+            </center>
+            <br>
+            <div class="controls">
+                <hr size="5px">
+                <center>
+                <button class="btn btn-primary btn-sm col-md-4" type="submit" style="margin-top: 15px;">Login  <i class="fas fa-sign-in-alt"></i></button>
+                </center>
+            </div>
+            </div>
+        </form>
+        </center>
+    	</div>
+</div>
+</div>
+</div>
+{% endblock %}

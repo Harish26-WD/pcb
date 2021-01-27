@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" integrity="sha512-JW3fT0YTK7pT7w437SoX6GcW76jOZ6E0jGmrqBAcloC4GKT+njHOY4fX5KxJ9WfIXTkNrAF994525fAHp+KCxg==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='master.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='master.js') }}">
+  <link rel="icon" href="{{ url_for('static', filename='app-logo.png') }}" type="image/icon type">
+  <title>PCB</title>
+</head>
+
+      <body onload="myFunction()" style="margin:0;">
+
+      <div id="loader"></div>
+
+      <script type="text/javascript">
+        var myVar;
+
+        function myFunction() {
+          myVar = setTimeout(showPage, 1200);
+        }
+
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("myDiv").style.display = "block";
+        }
+      </script>
+
+
+    <nav class="navbar navbar-light bg-light" style="margin-bottom: -30px;">
+      <a class="navbar-brand" href="{{ url_for('core.index') }}" style="color: #0275d8">
+        <img src="{{ url_for('static', filename='app-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+        PCB
+      </a>
+
+      <ul class="nav justify-content-right">
+        <li class="nav-item ">
+          <a class="nav-link active" href="{{ url_for('core.index') }}"><i class="fa fa-fw fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('core.info') }}"><i class="fa fa-fw fa-info-circle"></i> About</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url_for('users.account') }}"><i class="fas fa-user-circle"></i> Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url_for('blog_posts.create_post') }}"><i class="fas fa-poll-h"></i> Create Post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url_for('users.logout') }}" style="background-color: #0275d8;
+           color: white; border: 1px solid #0275d8; border-radius: 5px; padding: 5px 10px; font-size: 14px; margin-top: 3px;  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.5);"><i class="fas fa-sign-out-alt"></i> Logout</i></a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link " href="{{ url_for('users.login') }}"><i class="fas fa-share-square"></i> Login</a>
+        </li>
+        <li class="nav-item">
+         <!--  <button class="btn btn-sm btn-primary" style=" color: white"><a class="nav-link " href="{{ url_for('users.register') }}">Register</a></button> -->
+           <a class="nav-link " href="{{ url_for('users.register') }}" style="background-color: #097eb5;
+           color: white; border: 1px solid #0275d8; border-radius: 5px; padding: 5px 10px; font-size: 14px; margin-top: 3px; box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.5);"><i class="fas fa-sign-in-alt"></i>  Register</a>  
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <hr>
+     <div class="nav-scroller py--1 mb-1">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 link-secondary" href="#">World</a>
+      <a class="p-2 link-secondary" href="#">U.S.</a>
+      <a class="p-2 link-secondary" href="#">Technology</a>
+      <a class="p-2 link-secondary" href="#">Design</a>
+      <a class="p-2 link-secondary" href="#">Culture</a>
+      <a class="p-2 link-secondary" href="#">Business</a>
+      <a class="p-2 link-secondary" href="#">Politics</a>
+      <a class="p-2 link-secondary" href="#">Opinion</a>
+      <a class="p-2 link-secondary" href="#">Science</a>
+      <a class="p-2 link-secondary" href="#">Health</a>
+      <a class="p-2 link-secondary" href="#">Style</a>
+      <a class="p-2 link-secondary" href="#">Travel</a>
+    </nav>
+  </div>
+</div>
+<hr style="padding-top: 5px; padding-bottom: -5px;">
+  <div class="container">
+  
+    
+    {% block content %}
+
+
+
+    {% endblock %}
+
+  
+  </div>
+</body>
+</html>
